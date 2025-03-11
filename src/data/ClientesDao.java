@@ -168,5 +168,33 @@ public class ClientesDao {
         return null;
     }
     
+    public List<Clientes> buscaClientePorNome(String nome) {
+        List<Clientes> listaClientes = new ArrayList<>();
+
+        try {
+            ps = con.prepareStatement("SELECT * FROM clientes WHERE nome LIKE ?");
+
+            ps.setString(1, "%" + nome + "%");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Clientes clie = new Clientes();
+
+                clie.setId(rs.getInt("id"));
+                clie.setNome(rs.getString("nome"));
+                clie.setCpf(rs.getString("cpf"));
+                clie.setDataNascimento(rs.getString("dataNascimento"));
+                clie.setTelefone(rs.getString("telefone"));
+
+                listaClientes.add(clie);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar Cliente pelo nome: " + e.getMessage());
+        }
+
+        return listaClientes;
+    }
+    
     
 }

@@ -9,6 +9,7 @@ import data.Funcionarios;
 import data.FuncionariosDao;
 import data.Servicos;
 import data.ServicosDao;
+import java.awt.Color;
 import static java.awt.image.ImageObserver.WIDTH;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -54,7 +55,9 @@ public class TelaAgendamentoCad extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("AGENDAMENTOS");
-        jLayeredPane1.setOpaque(rootPaneCheckingEnabled);
+        Color corFundo = new Color(24, 9, 0);
+        jPanel1.setBackground(corFundo);
+        txtID.setEnabled(false);
         preencheTabela();
     }
 
@@ -67,54 +70,64 @@ public class TelaAgendamentoCad extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLayeredPane1 = new javax.swing.JLayeredPane();
-        lblTitulo = new javax.swing.JLabel();
-        txtServico = new javax.swing.JTextField();
-        txtDataHora = new javax.swing.JTextField();
-        txtCliente = new javax.swing.JTextField();
-        txtFuncionario = new javax.swing.JTextField();
-        botaoAgendar = new javax.swing.JButton();
+        botaoLimpar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAgendamentos = new javax.swing.JTable();
-        botaoVoltar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         txtBuscaNome = new javax.swing.JTextField();
-        botaoBuscar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtFuncionario = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtServicoId = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtDataHora = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtCliente = new javax.swing.JTextField();
+        txtPagamento1 = new javax.swing.JTextField();
+        lblTipoPag1 = new javax.swing.JLabel();
         botaoAtualizar = new javax.swing.JButton();
         botaoExcluir = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        btnCli = new javax.swing.JButton();
-        txtPagamento = new javax.swing.JTextField();
-        lblTipoPag = new javax.swing.JLabel();
-        btnFuncionarios = new javax.swing.JButton();
-        btnServicos = new javax.swing.JButton();
+        botaoAgendar = new javax.swing.JButton();
+        lblTitulo = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        botaoBuscar1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLayeredPane1.setBackground(new java.awt.Color(24, 9, 0));
-        jLayeredPane1.setForeground(new java.awt.Color(24, 9, 0));
-
-        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        lblTitulo.setText("Cadastrar Agendamento");
-
-        botaoAgendar.setBackground(new java.awt.Color(172, 137, 82));
-        botaoAgendar.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        botaoAgendar.setForeground(new java.awt.Color(255, 255, 255));
-        botaoAgendar.setText("Agendar");
-        botaoAgendar.addActionListener(new java.awt.event.ActionListener() {
+        botaoLimpar.setBackground(new java.awt.Color(172, 137, 82));
+        botaoLimpar.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        botaoLimpar.setForeground(new java.awt.Color(255, 255, 255));
+        botaoLimpar.setText("Limpar");
+        botaoLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoAgendarActionPerformed(evt);
+                botaoLimparActionPerformed(evt);
             }
         });
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(810, 630));
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(810, 630));
+        jPanel1.setLayout(null);
+
         tblAgendamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
                 "ID", "Data", "Serviço", "Funcionário", "Cliente", "Tipo de pagamento"
@@ -128,38 +141,73 @@ public class TelaAgendamentoCad extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblAgendamentos);
-
-        botaoVoltar.setBackground(new java.awt.Color(172, 137, 82));
-        botaoVoltar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        botaoVoltar.setForeground(new java.awt.Color(255, 255, 255));
-        botaoVoltar.setText("<");
-        botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoVoltarActionPerformed(evt);
+        tblAgendamentos.setPreferredSize(new java.awt.Dimension(375, 80));
+        tblAgendamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblAgendamentosMouseClicked(evt);
             }
         });
+        jScrollPane1.setViewportView(tblAgendamentos);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 280, 760, 300);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 25)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Agendamentos");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(20, 240, 169, 34);
+        jPanel1.add(txtBuscaNome);
+        txtBuscaNome.setBounds(450, 240, 160, 30);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Buscar por ID:");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(320, 240, 130, 27);
+        jPanel1.add(txtFuncionario);
+        txtFuncionario.setBounds(320, 110, 145, 30);
 
-        botaoBuscar.setBackground(new java.awt.Color(172, 137, 82));
-        botaoBuscar.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        botaoBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        botaoBuscar.setText("Buscar");
-        botaoBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoBuscarActionPerformed(evt);
-            }
-        });
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Funcionário ID");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(320, 80, 96, 21);
+        jPanel1.add(txtServicoId);
+        txtServicoId.setBounds(170, 110, 145, 30);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Serviço ID");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(170, 80, 67, 21);
+        jPanel1.add(txtDataHora);
+        txtDataHora.setBounds(20, 110, 145, 30);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Data/Hora");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(20, 80, 71, 21);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Cliente ID");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(470, 80, 65, 21);
+        jPanel1.add(txtCliente);
+        txtCliente.setBounds(470, 110, 145, 30);
+        jPanel1.add(txtPagamento1);
+        txtPagamento1.setBounds(620, 110, 145, 30);
+
+        lblTipoPag1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        lblTipoPag1.setForeground(new java.awt.Color(255, 255, 255));
+        lblTipoPag1.setText("Tipo de pagamento");
+        jPanel1.add(lblTipoPag1);
+        lblTipoPag1.setBounds(620, 80, 132, 21);
 
         botaoAtualizar.setBackground(new java.awt.Color(172, 137, 82));
-        botaoAtualizar.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botaoAtualizar.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         botaoAtualizar.setForeground(new java.awt.Color(255, 255, 255));
         botaoAtualizar.setText("Atualizar");
         botaoAtualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -167,9 +215,11 @@ public class TelaAgendamentoCad extends javax.swing.JFrame {
                 botaoAtualizarActionPerformed(evt);
             }
         });
+        jPanel1.add(botaoAtualizar);
+        botaoAtualizar.setBounds(470, 150, 145, 30);
 
         botaoExcluir.setBackground(new java.awt.Color(172, 137, 82));
-        botaoExcluir.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botaoExcluir.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         botaoExcluir.setForeground(new java.awt.Color(255, 255, 255));
         botaoExcluir.setText("Excluir");
         botaoExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -177,232 +227,96 @@ public class TelaAgendamentoCad extends javax.swing.JFrame {
                 botaoExcluirActionPerformed(evt);
             }
         });
+        jPanel1.add(botaoExcluir);
+        botaoExcluir.setBounds(620, 150, 145, 30);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Serviço ID");
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Data/Hora");
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Funcionário ID");
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Cliente ID");
-
-        btnCli.setBackground(new java.awt.Color(172, 137, 82));
-        btnCli.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        btnCli.setForeground(new java.awt.Color(255, 255, 255));
-        btnCli.setText("clientes");
-        btnCli.addActionListener(new java.awt.event.ActionListener() {
+        botaoAgendar.setBackground(new java.awt.Color(172, 137, 82));
+        botaoAgendar.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        botaoAgendar.setForeground(new java.awt.Color(255, 255, 255));
+        botaoAgendar.setText("Agendar");
+        botaoAgendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCliActionPerformed(evt);
+                botaoAgendarActionPerformed(evt);
             }
         });
+        jPanel1.add(botaoAgendar);
+        botaoAgendar.setBounds(320, 150, 145, 30);
 
-        lblTipoPag.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        lblTipoPag.setForeground(new java.awt.Color(255, 255, 255));
-        lblTipoPag.setText("Tipo de pagamento");
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("Cadastrar Agendamento");
+        jPanel1.add(lblTitulo);
+        lblTitulo.setBounds(0, 0, 810, 41);
 
-        btnFuncionarios.setBackground(new java.awt.Color(172, 137, 82));
-        btnFuncionarios.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        btnFuncionarios.setForeground(new java.awt.Color(255, 255, 255));
-        btnFuncionarios.setText("Funcionários");
-        btnFuncionarios.addActionListener(new java.awt.event.ActionListener() {
+        txtID.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtID.setMinimumSize(new java.awt.Dimension(64, 25));
+        txtID.setPreferredSize(new java.awt.Dimension(64, 30));
+        jPanel1.add(txtID);
+        txtID.setBounds(40, 150, 50, 30);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("ID:");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(20, 150, 54, 27);
+
+        botaoBuscar1.setBackground(new java.awt.Color(172, 137, 82));
+        botaoBuscar1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        botaoBuscar1.setForeground(new java.awt.Color(255, 255, 255));
+        botaoBuscar1.setText("Buscar");
+        botaoBuscar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFuncionariosActionPerformed(evt);
+                botaoBuscar1ActionPerformed(evt);
             }
         });
-
-        btnServicos.setBackground(new java.awt.Color(172, 137, 82));
-        btnServicos.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        btnServicos.setForeground(new java.awt.Color(255, 255, 255));
-        btnServicos.setText("Serviços");
-        btnServicos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnServicosActionPerformed(evt);
-            }
-        });
-
-        jLayeredPane1.setLayer(lblTitulo, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(txtServico, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(txtDataHora, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(txtCliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(txtFuncionario, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(botaoAgendar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(botaoVoltar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(txtBuscaNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(botaoBuscar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(botaoAtualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(botaoExcluir, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(btnCli, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(txtPagamento, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(lblTipoPag, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(btnFuncionarios, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(btnServicos, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
-        jLayeredPane1.setLayout(jLayeredPane1Layout);
-        jLayeredPane1Layout.setHorizontalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                .addGap(68, 68, 68)
-                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtServico, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtDataHora, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel5))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblTipoPag)
-                                        .addComponent(txtPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel6)
-                                    .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(botaoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtFuncionario)
-                                            .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(37, 37, 37))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                                .addComponent(btnCli)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnFuncionarios)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnServicos))))
-                    .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jLayeredPane1Layout.createSequentialGroup()
-                            .addComponent(botaoVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblTitulo)
-                            .addGap(246, 246, 246))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jLayeredPane1Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtBuscaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(botaoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(botaoAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
-        jLayeredPane1Layout.setVerticalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitulo)
-                    .addComponent(botaoVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
-                        .addComponent(botaoAgendar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtServico, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDataHora, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblTipoPag)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(btnCli)
-                            .addComponent(btnFuncionarios)
-                            .addComponent(btnServicos))
-                        .addGap(7, 7, 7)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(botaoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botaoAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtBuscaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
-        );
+        jPanel1.add(botaoBuscar1);
+        botaoBuscar1.setBounds(620, 240, 160, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 140, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCliActionPerformed
-        TelaClientesCad telaCli = new TelaClientesCad();
-        telaCli.setVisible(true);
-    }//GEN-LAST:event_btnCliActionPerformed
+    private void botaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLimparActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoLimparActionPerformed
 
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
-        if(!emptyId()){
-            int id = Integer.parseInt(txtBuscaNome.getText());
+        try{
+            int id = Integer.parseInt(txtID.getText());
             AgendamentosDao agendDao = new AgendamentosDao();
-            agendDao.excluir(id);
-            JOptionPane.showMessageDialog(this, "Dados excluidos.");
+            int resp = JOptionPane.showConfirmDialog(this, "Deseja excluir o cadastro selecionado ?");
+            if(resp == JOptionPane.YES_OPTION){
+                agendDao.excluir(id);
+                JOptionPane.showMessageDialog(this, "Dados excluidos.");
+            }
             
-            txtServico.setText("");
             txtDataHora.setText("");
-            txtPagamento.setText("");
-            txtCliente.setText("");
+            txtServicoId.setText("");
             txtFuncionario.setText("");
-            
+            txtCliente.setText("");
+            txtPagamento1.setText("");
             preencheTabela();
-        }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Falha ao excluir dados: "+ e);
+        }   
     }//GEN-LAST:event_botaoExcluirActionPerformed
-
-    private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
-        TelaInicial telaIni = new TelaInicial();
-        telaIni.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_botaoVoltarActionPerformed
 
     private void botaoAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAgendarActionPerformed
         Agendamentos agend = new Agendamentos();
@@ -421,7 +335,7 @@ public class TelaAgendamentoCad extends javax.swing.JFrame {
                             agend.setDataAgendamento(txtDataHora.getText());
                             
                             //SERVICO
-                            int sId = Integer.parseInt(txtServico.getText());
+                            int sId = Integer.parseInt(txtServicoId.getText());
                             ServicosDao servDao = new ServicosDao();
                             Servicos serv = servDao.buscaServicoPorId(sId);
                               if (serv == null) {
@@ -456,16 +370,16 @@ public class TelaAgendamentoCad extends javax.swing.JFrame {
                               if(serv == null || cli == null || func == null){
                                   JOptionPane.showMessageDialog(this, "Falha ao cadastrar agendamento");
                               }else{
-                                agend.setTipoPagamento(txtPagamento.getText());
+                                agend.setTipoPagamento(txtPagamento1.getText());
                                 agendDao.salvar(agend); 
                                 JOptionPane.showMessageDialog(this, "Dados salvos com sucesso.");
                                 preencheTabela(); 
-                                txtServico.setText("");
+                                txtServicoId.setText("");
                                 txtDataHora.setText("");
-                                txtPagamento.setText("");
+                                txtPagamento1.setText("");
                                 txtCliente.setText("");
                                 txtFuncionario.setText("");
-                                txtServico.requestFocus();   
+                                txtServicoId.requestFocus();   
 
                                 con.desconnect();
                               }
@@ -480,14 +394,23 @@ public class TelaAgendamentoCad extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_botaoAgendarActionPerformed
 
+    private void tblAgendamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAgendamentosMouseClicked
+        txtDataHora.setText(tblAgendamentos.getValueAt(tblAgendamentos.getSelectedRow(), 1).toString());
+        txtServicoId.setText(tblAgendamentos.getValueAt(tblAgendamentos.getSelectedRow(), 2).toString());
+        txtFuncionario.setText(tblAgendamentos.getValueAt(tblAgendamentos.getSelectedRow(), 3).toString());
+        txtCliente.setText(tblAgendamentos.getValueAt(tblAgendamentos.getSelectedRow(), 4).toString());
+        txtPagamento1.setText(tblAgendamentos.getValueAt(tblAgendamentos.getSelectedRow(), 5).toString());
+        txtID.setText(tblAgendamentos.getValueAt(tblAgendamentos.getSelectedRow(), 0).toString());
+    }//GEN-LAST:event_tblAgendamentosMouseClicked
+
     private void botaoAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAtualizarActionPerformed
-       try{
+        try{
             if(!emptyId()){
                int id = Integer.parseInt(txtBuscaNome.getText());
                
                String data = txtDataHora.getText();
                
-               int sId = Integer.parseInt(txtServico.getText());
+               int sId = Integer.parseInt(txtServicoId.getText());
                ServicosDao servDao = new ServicosDao();
                Servicos serv = servDao.buscaServicoPorId(sId);
                
@@ -499,7 +422,7 @@ public class TelaAgendamentoCad extends javax.swing.JFrame {
                FuncionariosDao funcDao = new FuncionariosDao();
                Funcionarios func = funcDao.buscaFuncionarioPorId(fId);
                
-               String tipoPagamento = txtPagamento.getText();
+               String tipoPagamento = txtPagamento1.getText();
 
                Agendamentos agend = new Agendamentos();
 
@@ -514,20 +437,22 @@ public class TelaAgendamentoCad extends javax.swing.JFrame {
                agendDao.atualizar(agend);
                JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso.");
 
-                txtServico.setText("");
+                txtServicoId.setText("");
                 txtDataHora.setText("");
-                txtPagamento.setText("");
+                txtPagamento1.setText("");
                 txtCliente.setText("");
                 txtFuncionario.setText("");
-                txtServico.requestFocus(); 
+                txtBuscaNome.setText("");
+                txtID.setText("");
+                txtServicoId.requestFocus();
                 preencheTabela();
             }
        }catch(NumberFormatException e){
            System.out.println("Erro: "+ e.getMessage());
-       }    
+       }
     }//GEN-LAST:event_botaoAtualizarActionPerformed
 
-    private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
+    private void botaoBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscar1ActionPerformed
         if(!emptyId()){
             int id = Integer.parseInt(txtBuscaNome.getText());
             AgendamentosDao agendDao = new AgendamentosDao();
@@ -536,25 +461,16 @@ public class TelaAgendamentoCad extends javax.swing.JFrame {
             if(agend == null){
                 JOptionPane.showMessageDialog(this, "Agendamento não encontrado.");
             }else{
-                txtServico.setText(String.valueOf(agend.getServico().getId()));
+                txtServicoId.setText(String.valueOf(agend.getServico().getId()));
                 txtDataHora.setText(agend.getDataAgendamento());
-                txtPagamento.setText(agend.getTipoPagamento());
+                txtPagamento1.setText(agend.getTipoPagamento());
                 txtCliente.setText(String.valueOf(agend.getCliente().getId()));
                 txtFuncionario.setText(String.valueOf(agend.getFuncionario().getId()));
+                txtID.setText(String.valueOf(id));
                 preencheTabela();
             }
         }
-    }//GEN-LAST:event_botaoBuscarActionPerformed
-
-    private void btnFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFuncionariosActionPerformed
-        TelaFuncionarioCad telaF = new TelaFuncionarioCad();
-        telaF.setVisible(true);
-    }//GEN-LAST:event_btnFuncionariosActionPerformed
-
-    private void btnServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServicosActionPerformed
-        TelaServicos telaS = new TelaServicos();
-        telaS.setVisible(true);
-    }//GEN-LAST:event_btnServicosActionPerformed
+    }//GEN-LAST:event_botaoBuscar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -597,34 +513,33 @@ public class TelaAgendamentoCad extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoAgendar;
     private javax.swing.JButton botaoAtualizar;
-    private javax.swing.JButton botaoBuscar;
+    private javax.swing.JButton botaoBuscar1;
     private javax.swing.JButton botaoExcluir;
-    private javax.swing.JButton botaoVoltar;
-    private javax.swing.JButton btnCli;
-    private javax.swing.JButton btnFuncionarios;
-    private javax.swing.JButton btnServicos;
+    private javax.swing.JButton botaoLimpar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblTipoPag;
+    private javax.swing.JLabel lblTipoPag1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTable tblAgendamentos;
     private javax.swing.JTextField txtBuscaNome;
     private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtDataHora;
     private javax.swing.JTextField txtFuncionario;
-    private javax.swing.JTextField txtPagamento;
-    private javax.swing.JTextField txtServico;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtPagamento1;
+    private javax.swing.JTextField txtServicoId;
     // End of variables declaration//GEN-END:variables
     
     public boolean emptyFields(){
         boolean isEmpty = true;
-        if(txtServico.getText().trim().isEmpty() || txtCliente.getText().trim().isEmpty() || txtDataHora.getText().trim().isEmpty() || txtFuncionario.getText().trim().isEmpty() || txtPagamento.getText().trim().isEmpty()){
+        if(txtServicoId.getText().trim().isEmpty() || txtCliente.getText().trim().isEmpty() || txtDataHora.getText().trim().isEmpty() || txtFuncionario.getText().trim().isEmpty() || txtPagamento1.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos para cadastrar");
         }else{
             isEmpty = false;
@@ -649,7 +564,7 @@ public class TelaAgendamentoCad extends javax.swing.JFrame {
     public boolean emptyId(){
         boolean isEmpty = true;
         if(txtBuscaNome.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(rootPane, "Digite o ID antes de atualizar");
+            JOptionPane.showMessageDialog(rootPane, "Busque o agendamento por ID antes de atualizar");
         }else{
             isEmpty = false;
         }

@@ -87,11 +87,12 @@ public class TelaInicial extends javax.swing.JFrame {
         lblUsu = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInicial = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("BARBERSHOPINICIAL");
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setPreferredSize(new java.awt.Dimension(950, 680));
         jPanel1.setLayout(null);
 
@@ -230,7 +231,14 @@ public class TelaInicial extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblInicial);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(192, 112, 750, 560);
+        jScrollPane1.setBounds(192, 172, 750, 500);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Agendamentos Marcados");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(190, 106, 750, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -249,25 +257,21 @@ public class TelaInicial extends javax.swing.JFrame {
     private void botaoAgendamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAgendamentosActionPerformed
         TelaAgendamentoCad telaAgend = new TelaAgendamentoCad();
         telaAgend.setVisible(true);
-        dispose();
     }//GEN-LAST:event_botaoAgendamentosActionPerformed
 
     private void botaoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoClientesActionPerformed
         TelaClientesCad telaCli = new TelaClientesCad();
         telaCli.setVisible(true);
-        dispose();
     }//GEN-LAST:event_botaoClientesActionPerformed
 
     private void botaoFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFuncionariosActionPerformed
         TelaFuncionarioCad telaFunc = new TelaFuncionarioCad();
         telaFunc.setVisible(true);
-        dispose();
     }//GEN-LAST:event_botaoFuncionariosActionPerformed
 
     private void botaoServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoServicoActionPerformed
         TelaServicos telaS = new TelaServicos();
         telaS.setVisible(true);
-        dispose();
     }//GEN-LAST:event_botaoServicoActionPerformed
 
     private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
@@ -322,6 +326,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JButton botaoServico;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

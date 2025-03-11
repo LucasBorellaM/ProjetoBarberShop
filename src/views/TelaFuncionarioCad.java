@@ -20,7 +20,7 @@ public class TelaFuncionarioCad extends javax.swing.JFrame {
         FuncionariosDao funcDao = new FuncionariosDao();
         
         List<Funcionarios> listaFuncionarios = funcDao.listaFuncionarios();
-        DefaultTableModel tableFuncionarios = (DefaultTableModel) tblFuncionarios.getModel();
+        DefaultTableModel tableFuncionarios = (DefaultTableModel) TblFuncionarios.getModel();
         tableFuncionarios.setNumRows(0);
         
         for(Funcionarios f: listaFuncionarios){
@@ -41,7 +41,9 @@ public class TelaFuncionarioCad extends javax.swing.JFrame {
         initComponents();
         this.setTitle("FUNCIONARIOS");
         this.setLocationRelativeTo(null);
-        painel.setOpaque(rootPaneCheckingEnabled);
+        Color corFundo = new Color(24, 9, 0);
+        jPanel1.setBackground(corFundo);
+        txtID.setEnabled(false);
         preencheTabela();
     }
 
@@ -54,47 +56,53 @@ public class TelaFuncionarioCad extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        painel = new javax.swing.JLayeredPane();
-        jLabel1 = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
-        txtCpf = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TblFuncionarios = new javax.swing.JTable();
         txtDataNasc = new javax.swing.JTextField();
+        txtBuscaFuncionario = new javax.swing.JTextField();
+        txtCpf = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         txtTelefone = new javax.swing.JTextField();
         botaoCadastrar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblFuncionarios = new javax.swing.JTable();
-        botaoVoltar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txtBuscaNome = new javax.swing.JTextField();
-        botaoBuscar = new javax.swing.JButton();
-        botaoAtualizar = new javax.swing.JButton();
+        btnAtualizar = new javax.swing.JButton();
         botaoExcluir = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        botaoBuscar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        txtNome1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(810, 630));
 
-        painel.setBackground(new java.awt.Color(24, 9, 0));
-        painel.setForeground(new java.awt.Color(24, 9, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(810, 630));
+        jPanel1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Cadastrar Funcionários");
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Telefone");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(610, 80, 58, 21);
 
-        botaoCadastrar.setBackground(new java.awt.Color(172, 137, 82));
-        botaoCadastrar.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        botaoCadastrar.setForeground(new java.awt.Color(255, 255, 255));
-        botaoCadastrar.setText("Cadastrar");
-        botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoCadastrarActionPerformed(evt);
-            }
-        });
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 25)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Funcionários");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(20, 240, 160, 34);
 
-        tblFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
+        txtID.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtID.setMinimumSize(new java.awt.Dimension(64, 25));
+        txtID.setPreferredSize(new java.awt.Dimension(64, 30));
+        jPanel1.add(txtID);
+        txtID.setBounds(40, 150, 50, 30);
+
+        TblFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -113,48 +121,93 @@ public class TelaFuncionarioCad extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblFuncionarios);
-
-        botaoVoltar.setBackground(new java.awt.Color(172, 137, 82));
-        botaoVoltar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        botaoVoltar.setForeground(new java.awt.Color(255, 255, 255));
-        botaoVoltar.setText("<");
-        botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoVoltarActionPerformed(evt);
+        TblFuncionarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TblFuncionariosMouseClicked(evt);
             }
         });
+        jScrollPane1.setViewportView(TblFuncionarios);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 25)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Funcionários");
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 280, 760, 300);
+
+        txtDataNasc.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtDataNasc.setPreferredSize(new java.awt.Dimension(64, 30));
+        jPanel1.add(txtDataNasc);
+        txtDataNasc.setBounds(410, 110, 160, 30);
+
+        txtBuscaFuncionario.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtBuscaFuncionario.setPreferredSize(new java.awt.Dimension(64, 30));
+        jPanel1.add(txtBuscaFuncionario);
+        txtBuscaFuncionario.setBounds(450, 240, 160, 30);
+
+        txtCpf.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtCpf.setPreferredSize(new java.awt.Dimension(64, 30));
+        jPanel1.add(txtCpf);
+        txtCpf.setBounds(210, 110, 160, 30);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("ID:");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(20, 150, 54, 27);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Data de Nascimento:");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(410, 80, 180, 21);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Buscar por ID:");
+        jLabel3.setText("Buscar por nome:");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(280, 240, 160, 27);
 
-        botaoBuscar.setBackground(new java.awt.Color(172, 137, 82));
-        botaoBuscar.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        botaoBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        botaoBuscar.setText("Buscar");
-        botaoBuscar.addActionListener(new java.awt.event.ActionListener() {
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("CPF:");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(210, 80, 50, 21);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Cadastrar Funcionários");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 10, 800, 41);
+
+        txtTelefone.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtTelefone.setPreferredSize(new java.awt.Dimension(64, 30));
+        jPanel1.add(txtTelefone);
+        txtTelefone.setBounds(610, 110, 160, 30);
+
+        botaoCadastrar.setBackground(new java.awt.Color(172, 137, 82));
+        botaoCadastrar.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        botaoCadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        botaoCadastrar.setText("Cadastrar");
+        botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoBuscarActionPerformed(evt);
+                botaoCadastrarActionPerformed(evt);
             }
         });
+        jPanel1.add(botaoCadastrar);
+        botaoCadastrar.setBounds(210, 150, 160, 30);
 
-        botaoAtualizar.setBackground(new java.awt.Color(172, 137, 82));
-        botaoAtualizar.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        botaoAtualizar.setForeground(new java.awt.Color(255, 255, 255));
-        botaoAtualizar.setText("Atualizar");
-        botaoAtualizar.addActionListener(new java.awt.event.ActionListener() {
+        btnAtualizar.setBackground(new java.awt.Color(172, 137, 82));
+        btnAtualizar.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        btnAtualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAtualizar.setText("Atualizar");
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoAtualizarActionPerformed(evt);
+                btnAtualizarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnAtualizar);
+        btnAtualizar.setBounds(410, 150, 160, 30);
 
         botaoExcluir.setBackground(new java.awt.Color(172, 137, 82));
-        botaoExcluir.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        botaoExcluir.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         botaoExcluir.setForeground(new java.awt.Color(255, 255, 255));
         botaoExcluir.setText("Excluir");
         botaoExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -162,145 +215,65 @@ public class TelaFuncionarioCad extends javax.swing.JFrame {
                 botaoExcluirActionPerformed(evt);
             }
         });
+        jPanel1.add(botaoExcluir);
+        botaoExcluir.setBounds(610, 150, 160, 30);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Nome");
+        botaoBuscar.setBackground(new java.awt.Color(172, 137, 82));
+        botaoBuscar.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        botaoBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        botaoBuscar.setText("Buscar");
+        botaoBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botaoBuscar);
+        botaoBuscar.setBounds(620, 240, 160, 30);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("CPF");
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Nome: ");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(20, 80, 54, 27);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Data de Nascimento");
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Telefone");
-
-        painel.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(txtNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(txtCpf, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(txtDataNasc, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(txtTelefone, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(botaoCadastrar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(botaoVoltar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(txtBuscaNome, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(botaoBuscar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(botaoAtualizar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(botaoExcluir, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        painel.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout painelLayout = new javax.swing.GroupLayout(painel);
-        painel.setLayout(painelLayout);
-        painelLayout.setHorizontalGroup(
-            painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addGap(161, 161, 161)
-                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botaoCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6)
-                    .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtTelefone)
-                        .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(119, 119, 119))
-            .addGroup(painelLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(painelLayout.createSequentialGroup()
-                        .addComponent(botaoVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(239, 239, 239)
-                        .addComponent(jLabel1))
-                    .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelLayout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtBuscaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(botaoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(botaoAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
-        painelLayout.setVerticalGroup(
-            painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(botaoVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(botaoCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(botaoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botaoAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botaoExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtBuscaNome, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
-        );
+        txtNome1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtNome1.setPreferredSize(new java.awt.Dimension(64, 30));
+        jPanel1.add(txtNome1);
+        txtNome1.setBounds(20, 110, 160, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(140, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(painel)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TblFuncionariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblFuncionariosMouseClicked
+        txtNome1.setText(TblFuncionarios.getValueAt(TblFuncionarios.getSelectedRow(), 1).toString());
+        txtCpf.setText(TblFuncionarios.getValueAt(TblFuncionarios.getSelectedRow(), 2).toString());
+        txtDataNasc.setText(TblFuncionarios.getValueAt(TblFuncionarios.getSelectedRow(), 3).toString());
+        txtTelefone.setText(TblFuncionarios.getValueAt(TblFuncionarios.getSelectedRow(), 4).toString());
+        txtID.setText(TblFuncionarios.getValueAt(TblFuncionarios.getSelectedRow(), 0).toString());
+
+    }//GEN-LAST:event_TblFuncionariosMouseClicked
 
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
         Funcionarios func = new Funcionarios();
         FuncionariosDao funcDao = new FuncionariosDao();
         Conexao con = new Conexao();
         int resposta;
-        
+
         if(valida()){
             if(!emptyFields()){
                 func = getFuncionarios();
@@ -310,96 +283,108 @@ public class TelaFuncionarioCad extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "Falha ao conectar a banco de dados");
                     }else{
                         resposta = funcDao.salvar(func);
+
                         if(resposta == 1){
                             JOptionPane.showMessageDialog(this, "Dados inseridos com sucesso.");
-                            txtNome.setText("");
+                            txtNome1.setText("");
                             txtCpf.setText("");
                             txtDataNasc.setText("");
                             txtTelefone.setText("");
-                            txtNome.requestFocus();
+                            txtNome1.requestFocus();
                         }else if(resposta == 1062){
                             JOptionPane.showMessageDialog(this, "Dados já cadastrados");
                         }else{
-                            JOptionPane.showMessageDialog(this, "Falha ao inserir cliente");
+                            JOptionPane.showConfirmDialog(this, "Falha ao cadastrar");
                         }
                         con.desconnect();
                     }
                 }catch(SQLException e){
-                    JOptionPane.showMessageDialog(this, "Error "+ e.getMessage());
+                    JOptionPane.showMessageDialog(this, "SQL ERROR: "+ e);
                 }
             }
-        }    
-       preencheTabela();
+        }
+        preencheTabela();
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
-    private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
-        TelaInicial telaIni = new TelaInicial();
-        telaIni.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_botaoVoltarActionPerformed
-
-    private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
-         if(!emptyId()){
-            int id = Integer.parseInt(txtBuscaNome.getText());
-            FuncionariosDao funcDao = new FuncionariosDao();
-            int resp = JOptionPane.showConfirmDialog(this, "Ao excluir esse cliente, todos agendamentos cadastrados a esse id serão excluidos.\n Deseja continuar ?");
-            if(resp == JOptionPane.YES_OPTION){
-                funcDao.excluir(id);
-                JOptionPane.showMessageDialog(this, "Dados excluidos.");
-            }
-            
-            txtNome.setText("");
-            txtCpf.setText("");
-            txtDataNasc.setText("");
-            txtTelefone.setText("");
-            preencheTabela();
-        }
-    }//GEN-LAST:event_botaoExcluirActionPerformed
-
-    private void botaoAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAtualizarActionPerformed
-        if(!emptyId()){
-            int id = Integer.parseInt(txtBuscaNome.getText());
-            String nome = txtNome.getText();
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        try{
+            int id = Integer.parseInt(txtID.getText());
+            String nome = txtNome1.getText();
             String cpf = txtCpf.getText();
             String dataNasci = txtDataNasc.getText();
             String telefone = txtTelefone.getText();
-            
+
             Funcionarios func = new Funcionarios();
-            
+
             func.setNome(nome);
             func.setCpf(cpf);
             func.setDataNascimento(dataNasci);
             func.setTelefone(telefone);
             func.setId(id);
-            
+
             FuncionariosDao funcDao = new FuncionariosDao();
             funcDao.atualizar(func);
             JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso.");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Falha ao alterar dados: "+ e);
         }
-            txtNome.setText("");
+        txtNome1.setText("");
+        txtCpf.setText("");
+        txtDataNasc.setText("");
+        txtTelefone.setText("");
+        txtID.setText("");
+        preencheTabela();
+    }//GEN-LAST:event_btnAtualizarActionPerformed
+
+    private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
+        try{
+            int id = Integer.parseInt(txtID.getText());
+            FuncionariosDao funcDao = new FuncionariosDao();
+            int resp = JOptionPane.showConfirmDialog(this, "Ao excluir esse funcionário, todos agendamentos cadastrados a esse id serão excluidos.\n Deseja continuar ?");
+            if(resp == JOptionPane.YES_OPTION){
+                funcDao.excluir(id);
+                JOptionPane.showMessageDialog(this, "Dados excluidos.");
+            }
+
+            txtNome1.setText("");
             txtCpf.setText("");
             txtDataNasc.setText("");
             txtTelefone.setText("");
-            txtBuscaNome.setText("");
             preencheTabela();
-    }//GEN-LAST:event_botaoAtualizarActionPerformed
+
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Falha ao excluir dados: "+ e);
+        }
+    }//GEN-LAST:event_botaoExcluirActionPerformed
 
     private void botaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoBuscarActionPerformed
-        if(!emptyId()){
-            int resposta;
-            int id = Integer.parseInt(txtBuscaNome.getText());
-            FuncionariosDao funcDao = new FuncionariosDao();
-            Funcionarios func = funcDao.getFuncionarios(id);
-            
-            if(func == null){
-                JOptionPane.showMessageDialog(this, "Cliente não encontrado.");
-            }else{
-                txtNome.setText(func.getNome());
-                txtCpf.setText(func.getCpf());
-                txtDataNasc.setText(func.getDataNascimento());
-                txtTelefone.setText(func.getTelefone());
-                preencheTabela();
+        String nomebuscado = txtBuscaFuncionario.getText().trim();
+        try{
+            if(nomebuscado.isEmpty()){
+                DefaultTableModel tableClientes = (DefaultTableModel) TblFuncionarios.getModel();
+                tableClientes.setNumRows(0);
             }
+
+            FuncionariosDao funcDao = new FuncionariosDao();
+            List<Funcionarios> funcionariosEncontrados = funcDao.buscaFuncionarioPorNome(nomebuscado);
+
+            if(funcionariosEncontrados.isEmpty()){
+                JOptionPane.showMessageDialog(this, "Nenhum cliente encontrado com esse nome.");
+            }else{
+                DefaultTableModel tableClientes = (DefaultTableModel) TblFuncionarios.getModel();
+                tableClientes.setNumRows(0);
+
+                for(Funcionarios f: funcionariosEncontrados){
+                    tableClientes.addRow(new Object[]{f.getId(),
+                        f.getNome(),
+                        f.getCpf(),
+                        f.getDataNascimento(),
+                        f.getTelefone()});
+            }
+        }
+
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "ERRO: "+ e);
         }
     }//GEN-LAST:event_botaoBuscarActionPerformed
 
@@ -442,11 +427,11 @@ public class TelaFuncionarioCad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoAtualizar;
+    private javax.swing.JTable TblFuncionarios;
     private javax.swing.JButton botaoBuscar;
     private javax.swing.JButton botaoCadastrar;
     private javax.swing.JButton botaoExcluir;
-    private javax.swing.JButton botaoVoltar;
+    private javax.swing.JButton btnAtualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -454,19 +439,20 @@ public class TelaFuncionarioCad extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLayeredPane painel;
-    private javax.swing.JTable tblFuncionarios;
-    private javax.swing.JTextField txtBuscaNome;
+    private javax.swing.JTextField txtBuscaFuncionario;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtDataNasc;
-    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtNome1;
     private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
 
     public boolean emptyFields(){
         boolean isEmpty = true;
-        if(txtNome.getText().trim().isEmpty() || txtCpf.getText().trim().isEmpty() || txtDataNasc.getText().trim().isEmpty() || txtTelefone.getText().trim().isEmpty()){
+        if(txtNome1.getText().trim().isEmpty() || txtCpf.getText().trim().isEmpty() || txtDataNasc.getText().trim().isEmpty() || txtTelefone.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos para cadastrar");
         }else{
             isEmpty = false;
@@ -476,7 +462,7 @@ public class TelaFuncionarioCad extends javax.swing.JFrame {
     public boolean valida(){
         boolean valido = true;
 
-        String nome = txtNome.getText();
+        String nome = txtNome1.getText();
         String cpf = txtCpf.getText();
         String data = txtDataNasc.getText();
         String telefone = txtTelefone.getText();
@@ -505,7 +491,7 @@ public class TelaFuncionarioCad extends javax.swing.JFrame {
     }
 
     public Funcionarios getFuncionarios(){
-        String nome = txtNome.getText();
+        String nome = txtNome1.getText();
         String cpf = txtCpf.getText();
         String data = txtDataNasc.getText();
         String telefone = txtTelefone.getText();
@@ -516,7 +502,7 @@ public class TelaFuncionarioCad extends javax.swing.JFrame {
     
     public boolean emptyId(){
         boolean isEmpty = true;
-        if(txtBuscaNome.getText().trim().isEmpty()){
+        if(txtID.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "Digite o ID antes de atualizar");
         }else{
             isEmpty = false;
@@ -524,12 +510,5 @@ public class TelaFuncionarioCad extends javax.swing.JFrame {
         return isEmpty;
     }
 
-    public int pegaPosicao(){
-        int posicao = tblFuncionarios.getSelectedRow();
-        if(posicao == -1){
-            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha");
-        }
-        return posicao;
-    }
 
 }
