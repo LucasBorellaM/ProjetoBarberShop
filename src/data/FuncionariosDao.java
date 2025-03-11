@@ -147,7 +147,7 @@ public class FuncionariosDao {
      * @param id
      * @return func
      */     
-        public Funcionarios buscaFuncionarioPorId(int id){
+    public Funcionarios buscaFuncionarioPorId(int id){
         try{
             ps = con.prepareStatement("SELECT * FROM funcionarios WHERE id =?");
             
@@ -170,4 +170,32 @@ public class FuncionariosDao {
         return null;
     }
     
+    public List<Funcionarios> buscaFuncionarioPorNome(String nome) {
+        List<Funcionarios> listaFuncionarios = new ArrayList<>();
+
+        try {
+            ps = con.prepareStatement("SELECT * FROM funcionarios WHERE nome LIKE ?");
+
+            ps.setString(1, "%" + nome + "%");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Funcionarios func = new Funcionarios();
+
+                func.setId(rs.getInt("id"));
+                func.setNome(rs.getString("nome"));
+                func.setCpf(rs.getString("cpf"));
+                func.setDataNascimento(rs.getString("dataNascimento"));
+                func.setTelefone(rs.getString("telefone"));
+
+                listaFuncionarios.add(func);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar Cliente pelo nome: " + e.getMessage());
+        }
+
+        return listaFuncionarios;
+    }
+         
 }

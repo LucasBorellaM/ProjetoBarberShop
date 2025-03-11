@@ -165,4 +165,31 @@ public class ServicosDao {
         return null;
     }
     
+    public List<Servicos> buscaServicoPorNome(String nome) {
+        List<Servicos> listaServicos = new ArrayList<>();
+
+        try {
+            ps = con.prepareStatement("SELECT * FROM servicos WHERE nome LIKE ?");
+
+            ps.setString(1, "%" + nome + "%");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Servicos serv = new Servicos();
+
+                serv.setId(rs.getInt("id"));
+                serv.setNome(rs.getString("nome"));
+                serv.setValorCusto(rs.getDouble("valorCusto"));
+                serv.setValorCobrado(rs.getDouble("ValorCobrado"));
+
+                listaServicos.add(serv);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar Cliente pelo nome: " + e.getMessage());
+        }
+
+        return listaServicos;
+    }
+    
 }

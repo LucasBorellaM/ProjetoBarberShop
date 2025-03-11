@@ -48,6 +48,15 @@ public class AgendamentosDao {
         }catch(SQLException e){
             System.out.println("Falha ao salvar dados: "+ e.getMessage());
             return e.getErrorCode();
+        }finally{
+            try {
+			if(ps != null){
+				ps.close();
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
         }
     }
     
@@ -89,6 +98,15 @@ public class AgendamentosDao {
         }catch(SQLException e){
             System.out.println("Falha ao buscar agendamento: "+ e.getMessage());
             return null;
+        }finally{
+            try {
+			if(ps != null){
+				ps.close();
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
         }
     }
     
@@ -112,6 +130,15 @@ public class AgendamentosDao {
             
         }catch(SQLException e){
             System.out.println("Falha ao atualizar agendamento: "+ e.getMessage());
+        }finally{
+            try {
+			if(ps != null){
+				ps.close();
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
         }
     }
     
@@ -128,6 +155,15 @@ public class AgendamentosDao {
             
         }catch(SQLException e){
             System.out.println("Falha ao excluir agendamento: "+ e.getMessage());
+        }finally{
+            try {
+			if(ps != null){
+				ps.close();
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
         }
     }
     
@@ -136,11 +172,10 @@ public class AgendamentosDao {
      * @return agendamentosLista
      */    
     public List<Agendamentos> listaAgendamentos(){
+        List<Agendamentos> agendamentosLista = new ArrayList<>();
         try{
             ps = this.con.prepareStatement("SELECT * FROM agendamentos");
             ResultSet rs = ps.executeQuery();
-            
-            List<Agendamentos> agendamentosLista = new ArrayList<>();
             
             while(rs.next()){
                 Agendamentos agend = new Agendamentos();
@@ -166,12 +201,54 @@ public class AgendamentosDao {
                 agend.setTipoPagamento(rs.getString("tipoPagamento"));
                 agendamentosLista.add(agend);
             }
-            return agendamentosLista;
             
         }catch(SQLException e){
             System.out.println("Falha ao listar agendamentos: "+ e.getMessage());
             return null;
         }
+        return agendamentosLista;
     }
     
+    public List<Agendamentos> buscaAgendamentoPorId(int id) {
+        List<Agendamentos> listaAgendamentos = new ArrayList<>();
+
+        try {
+            ps = con.prepareStatement("SELECT * FROM agendamentos WHERE id= ?");
+
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Agendamentos agend = new Agendamentos();
+
+                agend.setId(rs.getInt("id"));
+                agend.setDataAgendamento(rs.getString("dataAgendamento"));
+                
+                int servicoId = rs.getInt("servico_id");
+                int funcionarioId = rs.getInt("funcionario_id");
+                int clienteId = rs.getInt("cliente_id");
+
+                Servicos serv = new Servicos();
+                serv.setId(servicoId);
+                Funcionarios func = new Funcionarios();
+                func.setId(funcionarioId);
+                Clientes cli = new Clientes();
+                cli.setId(clienteId);
+
+                agend.setServico(serv) ;
+                agend.setFuncionario(func);
+                agend.setCliente(cli);
+                
+                agend.setTipoPagamento(rs.getString("tipoPagamento"));
+
+                listaAgendamentos.add(agend);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar agendamento: " + e.getMessage());
+        }
+
+        return listaAgendamentos;
+    }
+ 
 }
